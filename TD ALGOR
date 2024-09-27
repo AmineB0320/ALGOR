@@ -1,0 +1,74 @@
+/*************
+Travaux Dirigés 1
+1.1 Points et polygone (enregistrement)
+**********/
+
+#include <vector>
+//#include <cmath>
+
+int main()
+{
+    
+    struct point
+    {
+        float x, y ;
+        char nom ;
+    
+    };
+
+    using polygone = std::vector <point> ;
+    
+    polygone poly ;
+    float peri_moyenne ;
+    polygone bb ;
+    
+    polygone lire(string, nom)
+    {
+        point A ;
+        ifsteam ifs(nom) ;
+        polygone P ;
+        
+        if (!ifs) 
+        {
+            cout << "erreur" << endl ;
+            exit (1) ;
+        }
+        
+        ifs >> A.x >> A.y >> A.nom ;
+        P.push_back(A) ;
+        ifs >> A.x >> A.y >> A.nom ;
+        while (A.nom != P[0].nom){
+            P.push_back(A) ;
+            ifs >> A.x >> A.y >> A.nom ;
+        }
+        
+        return P ;
+    }
+    
+    float calcul_peri(polygone &P)
+    {
+        float S ;
+        S = sqrt( (P[P.size() - 1].x - P[0].x)**2 + (P[P.size() - 1].y - P[0].y) ) ;
+        for (int i = 0 ; i < P.size() - 1 ; ++i)
+        {
+            s += sqrt( (P[i].x - P[i+1].x)**2 + (P[i].y - P[i+1].y)**2 )
+        }
+        rerturn s ;
+    }
+    
+    float calcul_moy(Polygone &P) {
+        float M ;
+        M = calcul_peri(P) ;
+        return M / P.size() ;
+    }
+    
+    poly = lire ("data.txt") ;
+    peri = calcul_peri (poly) ;
+    moyenne = calcul_moy (poly) ;
+    bb = boite_englobante (poly) ;
+    cout << '' << peri << '' << moyenne << '' << bb << endl ;
+    ecrire (poly);
+    
+    return 0 ;
+};
+
